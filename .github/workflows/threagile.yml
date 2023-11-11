@@ -34,7 +34,7 @@ jobs:
         run: |
           git config --local user.email "threagile@example.com" # customize as desired
           git config --local user.name "Threagile" # customize as desired
-          git add threagile/output/report.pdf
-          git add threagile/output/data-flow-diagram.png
+          git add threagiletest/threagile/output/report.pdf
+          git add threagiletest/threagile/output/data-flow-diagram.png
           git commit -m "Update threat model report and data-flow diagram by Threagile" # customize as desired
           git push
