@@ -13,7 +13,7 @@ jobs:
       
       # Checkout the repo
       - name: Checkout Workspace
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.1
      
       # Run Threagile
       - name: Run Threagile
@@ -24,7 +24,7 @@ jobs:
      
       # Archive resulting files as artifacts
       - name: Archive Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: threagile-report
           path: threagile/output
