@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - 'threagile.yaml' # useful to filter this job to execute only when the threat model changes
+      - 'threagiletest/threagile.yaml' # useful to filter this job to execute only when the threat model changes
 
 
 jobs:
