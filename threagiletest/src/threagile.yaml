@@ -1,4 +1,4 @@
-threagile_version: 1.0.0
+ethreagile_version: 1.0.0
 
 # NOTE:
 # Some more Notes...e
@@ -22,7 +22,7 @@ date: 2020-03-31
 
 author:
   name: mb
-  homepage: www.example.de
+  homepage: www.example.deee
 
 
 management_summary_comment: >
