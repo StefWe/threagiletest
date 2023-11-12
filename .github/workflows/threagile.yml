@@ -27,14 +27,14 @@ jobs:
         uses: actions/upload-artifact@v3.1.3
         with:
           name: threagile-report
-          path: threagiletest/threagile/output
+          path: threagile/output
      
       # Optional step to link from repo's README.md if you want. This can also be committed to a separate branch if desired.
       - name: Commit & Push Report and DFD Diagram
         run: |
           git config --local user.email "threagile@example.com" # customize as desired
           git config --local user.name "Threagile" # customize as desired
-          git add threagiletest/threagile/output/report.pdf
-          git add threagiletest/threagile/output/data-flow-diagram.png
+          git add threagile/output/report.pdf
+          git add threagile/output/data-flow-diagram.png
           git commit -m "Update threat model report and data-flow diagram by Threagile" # customize as desired
           git push
