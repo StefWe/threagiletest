@@ -38,7 +38,6 @@ jobs:
           git add threagile/output/data-flow-diagram.png
           git add threagile/output/data-asset-diagram.png
           git add threagile/output/risks.json
-          git add threagile/output/risks.xslx
           git add threagile/output/stats.json
           git add threagile/output/tags.xlsx
           git add threagile/output/technical-assets.json
