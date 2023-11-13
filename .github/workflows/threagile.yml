@@ -20,7 +20,7 @@ jobs:
         id: threagile
         uses: threagile/run-threagile-action@v1
         with:
-          model-file: 'threagiletest/src/threagile.yaml'
+          model-file: 'threagile.yaml'
      
       # Archive resulting files as artifacts
       - name: Archive Results
