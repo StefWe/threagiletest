@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - 'threagiletest/src/threagile.yaml' # useful to filter this job to execute only when the threat model changes
+      - 'threagile.yaml'
 
 
 jobs:
@@ -32,9 +32,15 @@ jobs:
       # Optional step to link from repo's README.md if you want. This can also be committed to a separate branch if desired.
       - name: Commit & Push Report and DFD Diagram
         run: |
-          git config --local user.email "threagile@example.com" # customize as desired
-          git config --local user.name "Threagile" # customize as desired
+          git config --local user.email "threagile@sapl.io"
+          git config --local user.name "Threagile"
           git add threagile/output/report.pdf
           git add threagile/output/data-flow-diagram.png
+          git add threagile/output/data-asset-diagram.png
+          git add threagile/output/risks.json
+          git add threagile/output/risks.xslx
+          git add threagile/output/stats.json
+          git add threagile/output/tags.xlsx
+          git add threagile/output/technical-assets.json
           git commit -m "Update threat model report and data-flow diagram by Threagile" # customize as desired
           git push
