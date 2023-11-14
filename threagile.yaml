@@ -97,6 +97,34 @@ data_assets:
     justification_cia_rating: >
       Very important and highly sensitive data
 
+  Access-Request:
+    id: access-request
+    description: request by PEP to PDP
+    usage: business # values: business, devops
+    tags:
+    origin: PEP
+    owner:
+    quantity: very-many # values: very-few, few, many, very-many
+    confidentiality: strictly-confidential # values: public, internal, restricted, confidential, strictly-confidential
+    integrity: mission-critical # values: archive, operational, important, critical, mission-critical
+    availability: mission-critical # values: archive, operational, important, critical, mission-critical
+    justification_cia_rating: >
+      Very important and highly sensitive data
+
+  Access-Response:
+    id: access-response
+    description: response by PDP to PEP
+    usage: business # values: business, devops
+    tags:
+    origin: PDP
+    owner:
+    quantity: very-many # values: very-few, few, many, very-many
+    confidentiality: strictly-confidential # values: public, internal, restricted, confidential, strictly-confidential
+    integrity: mission-critical # values: archive, operational, important, critical, mission-critical
+    availability: mission-critical # values: archive, operational, important, critical, mission-critical
+    justification_cia_rating: >
+      Very important and highly sensitive data
+
 technical_assets:
 
 
@@ -229,7 +257,7 @@ technical_assets:
       - json
     communication_links:
       Policy Filesystem Access:
-        target: olicy-fileserver
+        target: policy-fileserver
         description: Link to the file system
         protocol: smb # values: see help
         authentication: credentials # values: none, credentials, session-id, token, client-certificate, two-factor
