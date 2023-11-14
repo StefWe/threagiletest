@@ -219,6 +219,7 @@ technical_assets:
         usage: business # values: business, devops
         data_assets_sent: # sequence of IDs to reference
           - access-request
+          - access-decision
         data_assets_received: # sequence of IDs to reference
           - access-decision
 
