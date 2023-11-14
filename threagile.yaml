@@ -67,7 +67,35 @@ tags_available:
 
 
 
-data_assets: {}
+data_assets:
+
+  Patient Data:
+    id: patient-data
+    description: Patient Data stored on hard drive
+    usage: business # values: business, devops
+    tags:
+    origin: Patient
+    owner:
+    quantity: many # values: very-few, few, many, very-many
+    confidentiality: strictly-confidential # values: public, internal, restricted, confidential, strictly-confidential
+    integrity: mission-critical # values: archive, operational, important, critical, mission-critical
+    availability: operational # values: archive, operational, important, critical, mission-critical
+    justification_cia_rating: >
+      Very sensitive data
+
+  Policies:
+    id: policies
+    description: Policies for authorization decisions
+    usage: business # values: business, devops
+    tags:
+    origin: business
+    owner:
+    quantity: few # values: very-few, few, many, very-many
+    confidentiality: strictly-confidential # values: public, internal, restricted, confidential, strictly-confidential
+    integrity: mission-critical # values: archive, operational, important, critical, mission-critical
+    availability: mission-critical # values: archive, operational, important, critical, mission-critical
+    justification_cia_rating: >
+      Very important and highly sensitive data
 
 technical_assets:
 
@@ -288,6 +316,9 @@ shared_runtimes: {}
 
 
 individual_risk_categories: {} # used for adding custom manually identified risks
+
+
+
 
 
 
