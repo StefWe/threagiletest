@@ -333,7 +333,7 @@ trust_boundaries:
     type: network-on-prem # values: see help
     tags:
     technical_assets_inside: # sequence of IDs to reference
-      - sapl-mvc
+      - policy-fileserver
     trust_boundaries_nested: # sequence of IDs to reference
 
 
