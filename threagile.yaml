@@ -269,6 +269,7 @@ technical_assets:
         readonly: false
         usage: business # values: business, devops
         data_assets_sent: # sequence of IDs to reference
+          - access-decision
         data_assets_received: # sequence of IDs to reference
           - policies
         #diagram_tweak_weight: 1
