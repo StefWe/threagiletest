@@ -327,9 +327,9 @@ trust_boundaries:
       - sapl-server-lt
     trust_boundaries_nested: # sequence of IDs to reference
 
-  DMZ:
-    id: file-server-netowrk
-    description: Fileserver Network
+  File-Server Network:
+    id: file-server-network
+    description: File-Server Network
     type: network-on-prem # values: see help
     tags:
     technical_assets_inside: # sequence of IDs to reference
