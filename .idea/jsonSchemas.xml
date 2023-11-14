@@ -12,7 +12,10 @@
               <option name="patterns">
                 <list>
                   <Item>
-                    <option name="path" value="threagiletest/src/threagile.yaml" />
+                    <option name="path" value="threagile.yaml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="threagile_sapl.yaml" />
                   </Item>
                 </list>
               </option>

@@ -1,7 +1,6 @@
 threagile_version: 1.0.0
 
 # NOTE:
-# Some more Notes...e
 #
 # For a perfect editing experience within your IDE of choice you can easily
 # get model syntax validation and autocompletion (very handy for enum values)
@@ -18,7 +17,7 @@ threagile_version: 1.0.0
 title:  The Streaming Attribute Policy Language and Engine
 
 
-date: 2023-11-12
+date: 2023-11-14
 
 author:
   name: mb
@@ -44,20 +43,15 @@ technical_overview:
 
 
 
-questions: # simply use "" as answer to signal "unanswered"
-  Some question without an answer?: ""
-  Some question with an answer?: >
-    Some answer
+questions:
 
 
 
 abuse_cases:
-  Some Abuse Case: >
-    Some Description
+
 
 
 security_requirements:
-  Some Security Requirement: Some Description
 
 
 
@@ -76,15 +70,111 @@ tags_available:
 data_assets: {}
 
 technical_assets:
-  Some Technical Asset:
-    id: server-lt
+
+
+  Customer Web Client:
+    id: customer-client
+    description: Customer Web Client
+    type: external-entity # values: external-entity, process, datastore
+    usage: business # values: business, devops
+    used_as_client_by_human: true
+    out_of_scope: true
+    justification_out_of_scope: Owned and managed by enduser customer
+    size: component # values: system, service, application, component
+    technology: browser # values: see help
+    tags:
+    internet: false
+    machine: physical # values: physical, virtual, container, serverless
+    encryption: none # values: none, transparent, data-with-symmetric-shared-key, data-with-asymmetric-shared-key, data-with-enduser-individual-key
+    owner: Customer
+    confidentiality: internal # values: public, internal, restricted, confidential, strictly-confidential
+    integrity: operational # values: archive, operational, important, critical, mission-critical
+    availability: operational # values: archive, operational, important, critical, mission-critical
+    justification_cia_rating: >
+      The client used by the customer to access the system.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: # sequence of IDs to reference
+      - patient-data
+    data_assets_stored: # sequence of IDs to reference
+    data_formats_accepted: # sequence of formats like: json, xml, serialization, file, csv
+    communication_links:
+      Customer Traffic:
+        target: sapl-mvc
+        description: Link to the mvc-app
+        protocol: https # values: see help
+        authentication: credentials # values: none, credentials, session-id, token, client-certificate, two-factor
+        authorization: enduser-identity-propagation # values: none, technical-user, enduser-identity-propagation
+        tags:
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business # values: business, devops
+        data_assets_sent: # sequence of IDs to reference
+          - patient-data
+        data_assets_received: # sequence of IDs to reference
+          - patient-data
+        #diagram_tweak_weight: 1
+        #diagram_tweak_constraint: false
+
+  SAPL MVC:
+    id: sapl-mvc
+    description: Spring-Boot MVC Webserver
+    type: process # values: external-entity, process, datastore
+    usage: business # values: business, devops
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: application # values: system, service, application, component
+    technology: web-server # values: see help
+    tags:
+      - spring-boot
+    internet: false
+    machine: virtual # values: physical, virtual, container, serverless
+    encryption: none # values: none, transparent, data-with-symmetric-shared-key, data-with-asymmetric-shared-key, data-with-enduser-individual-key
+    owner:
+    confidentiality: internal # values: public, internal, restricted, confidential, strictly-confidential
+    integrity: critical # values: archive, operational, important, critical, mission-critical
+    availability: critical # values: archive, operational, important, critical, mission-critical
+    justification_cia_rating: >
+      The correct configuration and reachability of the web server is mandatory for all usages of the portal.
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: true
+    data_assets_processed: # sequence of IDs to reference
+      - patient-data
+    data_assets_stored: # sequence of IDs to reference
+      - patient-data
+    data_formats_accepted: # sequence of formats like: json, xml, serialization, file, csv
+      - json
+    communication_links:
+      SAPL Server LT Traffic:
+        target: sapl-server-lt
+        description: Link to the SAPL Server LT
+        protocol: https # values: see help
+        authentication: credentials # values: none, credentials, session-id, token, client-certificate, two-factor
+        authorization: technical-user # values: none, technical-user, enduser-identity-propagation
+        tags:
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business # values: business, devops
+        data_assets_sent: # sequence of IDs to reference
+          - access-request
+        data_assets_received: # sequence of IDs to reference
+          - access-decisions
+
+
+  SAPL Server LT:
+    id: sapl-server-lt
     description: SAPL Server LT
     type: process # values: external-entity, process, datastore
     usage: business # values: business, devops
     used_as_client_by_human: false
     out_of_scope: false
     justification_out_of_scope:
-    size: service # values: system, service, application, component
+    size: component # values: system, service, application, component
     technology: web-service-rest # values: see help
     tags:
       - spring-boot
@@ -104,15 +194,91 @@ technical_assets:
     redundant: false
     custom_developed_parts: true
     data_assets_processed: # sequence of IDs to reference
+      - access-request
       - policies
     data_assets_stored: # sequence of IDs to reference
-      - policies
     data_formats_accepted: # sequence of formats like: json, xml, serialization, file, csv
       - json
     communication_links:
+      Policy Filesystem Access:
+        target: olicy-fileserver
+        description: Link to the file system
+        protocol: smb # values: see help
+        authentication: credentials # values: none, credentials, session-id, token, client-certificate, two-factor
+        authorization: technical-user # values: none, technical-user, enduser-identity-propagation
+        tags:
+        vpn: false
+        ip_filtered: false
+        readonly: false
+        usage: business # values: business, devops
+        data_assets_sent: # sequence of IDs to reference
+        data_assets_received: # sequence of IDs to reference
+          - policies
+        #diagram_tweak_weight: 1
+        #diagram_tweak_constraint: false
+
+  Policy Fileserver:
+    id: policy-fileserver
+    description: NTFS-Filesystem to store policies
+    type: datastore # values: external-entity, process, datastore
+    usage: business # values: business, devops
+    used_as_client_by_human: false
+    out_of_scope: false
+    justification_out_of_scope:
+    size: component # values: system, service, application, component
+    technology: file-server # values: see help
+    tags:
+      - windows
+    internet: false
+    machine: virtual # values: physical, virtual, container, serverless
+    encryption: none # values: none, transparent, data-with-symmetric-shared-key, data-with-asymmetric-shared-key, data-with-enduser-individual-key
+    owner:
+    confidentiality: strictly-confidential # values: public, internal, restricted, confidential, strictly-confidential
+    integrity: mission-critical # values: archive, operational, important, critical, mission-critical
+    availability: mission-critical # values: archive, operational, important, critical, mission-critical
+    justification_cia_rating: >
+       Policiy-files are crucial for safe operation
+    multi_tenant: false
+    redundant: false
+    custom_developed_parts: false
+    data_assets_processed: # sequence of IDs to reference
+    data_assets_stored: # sequence of IDs to reference
+      - policies
+    data_formats_accepted: # sequence of formats like: json, xml, serialization, file, csv
+      - file
+    communication_links:
 
 
-trust_boundaries: {}
+trust_boundaries:
+  Web DMZ:
+    id: web-dmz
+    description: MVC-DMZ
+    type: network-on-prem # values: see help
+    tags:
+    technical_assets_inside: # sequence of IDs to reference
+      - sapl-mvc
+    trust_boundaries_nested: # sequence of IDs to reference
+      - sapl-server-dmz
+      - file-server-network
+
+  SAPL-Server DMZ:
+    id: sapl-server-dmz
+    description: Authz-DMZ
+    type: network-on-prem # values: see help
+    tags:
+    technical_assets_inside: # sequence of IDs to reference
+      - sapl-server-lt
+    trust_boundaries_nested: # sequence of IDs to reference
+
+  DMZ:
+    id: file-server-netowrk
+    description: Fileserver Network
+    type: network-on-prem # values: see help
+    tags:
+    technical_assets_inside: # sequence of IDs to reference
+      - sapl-mvc
+    trust_boundaries_nested: # sequence of IDs to reference
+
 
 
 
