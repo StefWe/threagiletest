@@ -2,7 +2,9 @@ on:
   push:
     paths:
       - 'threagile.yaml'
-
+  pull_request:
+    paths:
+      - 'threagile.yaml'
 
 jobs:
 
