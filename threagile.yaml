@@ -17,7 +17,7 @@ threagile_version: 1.0.0
 title:  The Streaming Attribute Policy Language and Engine
 
 
-date: 2023-11-13
+date: 2023-11-14
 
 author:
   name: mb
@@ -111,8 +111,8 @@ data_assets:
     justification_cia_rating: >
       Very important and highly sensitive data
 
-  Access-Response:
-    id: access-response
+  Access-Decision:
+    id: access-decision
     description: response by PDP to PEP
     usage: business # values: business, devops
     tags:
@@ -219,7 +219,7 @@ technical_assets:
         data_assets_sent: # sequence of IDs to reference
           - access-request
         data_assets_received: # sequence of IDs to reference
-          - access-decisions
+          - access-decision
 
 
   SAPL Server LT:
