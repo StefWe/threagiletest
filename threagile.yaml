@@ -63,6 +63,7 @@ tags_available:
   - sapl-spring-pdp-embedded
   - sapl-webflux-endpoint
   - sapl-jwt
+  - windows-server
 
 
 
@@ -284,7 +285,7 @@ technical_assets:
     size: component # values: system, service, application, component
     technology: file-server # values: see help
     tags:
-      - windows
+      - windows-server
     internet: false
     machine: virtual # values: physical, virtual, container, serverless
     encryption: none # values: none, transparent, data-with-symmetric-shared-key, data-with-asymmetric-shared-key, data-with-enduser-individual-key
