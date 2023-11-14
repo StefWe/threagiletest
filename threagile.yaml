@@ -252,6 +252,7 @@ technical_assets:
     custom_developed_parts: true
     data_assets_processed: # sequence of IDs to reference
       - access-request
+      - access-decision
       - policies
     data_assets_stored: # sequence of IDs to reference
     data_formats_accepted: # sequence of formats like: json, xml, serialization, file, csv
@@ -269,7 +270,6 @@ technical_assets:
         readonly: false
         usage: business # values: business, devops
         data_assets_sent: # sequence of IDs to reference
-          - access-decision
         data_assets_received: # sequence of IDs to reference
           - policies
         #diagram_tweak_weight: 1
